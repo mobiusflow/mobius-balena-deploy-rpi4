@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  BALENA_APP_NAME: MobiusFlow-UP
+  BALENA_APP_NAME: MobiusFlow-RPI4
 
 jobs:
   publish:
