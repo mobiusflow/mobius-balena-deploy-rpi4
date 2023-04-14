@@ -53,4 +53,4 @@ data:
   defaultDeviceType: raspberrypi4-64
   supportedDeviceTypes:
     - raspberrypi4-64
-version: "1.15.0"
+version: "1.16.1"
