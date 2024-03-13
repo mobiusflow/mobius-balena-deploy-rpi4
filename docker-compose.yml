@@ -1,12 +1,21 @@
 version: "2"
 volumes:
-  resin-data:
+  mobius-data:
   mobius-licence:
-  mongodb:
+  node-red-assets:
+  node-red-data:
 
 services:
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    depends_on:
+      - mobius
+      - node-red
+
   mobius:
-    image: ghcr.io/mobiusflow/balena_rpi4_mobiusflow-le:1.19.9_1.19.9
+    image: ghcr.io/mobiusflow/balena_rpi4_mobiusflow-v2-le:2.0.9-beta.1_2.0.9-beta.1
     privileged: true
     restart: always
     ports:
@@ -15,6 +24,7 @@ services:
       - 502:502
       - 1883:1883
       - 4840:4840
+      - 5568:5568/udp
       - 8883:8883
       - 9081:9081
       - 10502:10502
@@ -27,8 +37,19 @@ services:
     labels:
       io.resin.features.supervisor-api: "1"
 
+  node-red:
+    image: mobiusflow/node-red-arm:1.0.0
+    container_name: node-red
+    privileged: false
+    restart: always
+    ports:
+      - 1880:1880
+    volumes:
+      - node-red-assets:/assets
+      - mobius-data:/data
+
   manage:
-    image: ghcr.io/mobiusflow/balena_rpi4_manage:1.19.9
+    image: ghcr.io/mobiusflow/balena_rpi4_manage:2.0.9-beta.1
     privileged: true
     network_mode: host
     restart: always
@@ -37,15 +58,3 @@ services:
     labels:
       io.resin.features.dbus: "1"
       io.resin.features.supervisor-api: "1"
-
-  mongodb:
-    image: bitnami/mongodb:4.4
-    container_name: mongodb
-    restart: always
-    environment:
-      - MONGODB_ROOT_PASSWORD=r5DybE57qug3WaHebeUy2bAvvVhKXUWHD
-      - MONGODB_USERNAME=mobius
-      - MONGODB_PASSWORD=RmzsXQYReLHaCS5wWGjAPjtJ7VnTw4qL
-      - MONGODB_DATABASE=mobius
-    volumes:
-      - mongodb:/bitnami/mongodb
