@@ -19,7 +19,6 @@ services:
     privileged: true
     restart: always
     ports:
-      - 80:80
       - 443:443
       - 502:502
       - 1883:1883
