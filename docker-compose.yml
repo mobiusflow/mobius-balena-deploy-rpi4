@@ -32,7 +32,7 @@ services:
       - 30815:30815
       - 30883:30883
     volumes:
-      - resin-data:/data
+      - mobius-data:/data
       - mobius-licence:/.licence
     labels:
       io.resin.features.supervisor-api: "1"
@@ -54,7 +54,7 @@ services:
     network_mode: host
     restart: always
     volumes:
-      - resin-data:/data
+      - mobius-data:/data
     labels:
       io.resin.features.dbus: "1"
       io.resin.features.supervisor-api: "1"
