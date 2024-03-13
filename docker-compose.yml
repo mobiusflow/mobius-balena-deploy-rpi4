@@ -49,7 +49,7 @@ services:
       - mobius-data:/data
 
   manage:
-    image: ghcr.io/mobiusflow/balena_rpi4_manage:2.0.9-beta.1
+    image: ghcr.io/mobiusflow/balena_rpi4_manage-v2:2.0.9-beta.1
     privileged: true
     network_mode: host
     restart: always
