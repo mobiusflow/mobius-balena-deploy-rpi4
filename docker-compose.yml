@@ -18,12 +18,13 @@ services:
     image: ghcr.io/mobiusflow/balena_rpi4_mobiusflow-v2-le:2.0.9-beta.2_2.0.9-beta.2
     privileged: true
     restart: always
+    network_mode: host
     ports:
       - 443:443
       - 502:502
       - 1883:1883
       - 4840:4840
-      - 5568:5568/udp
+      - "5568:5568/udp"
       - 8883:8883
       - 9081:9081
       - 10502:10502
