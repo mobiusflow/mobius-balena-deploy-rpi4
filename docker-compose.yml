@@ -15,7 +15,7 @@ services:
       - node-red
 
   mobius:
-    image: ghcr.io/mobiusflow/balena_rpi4_mobiusflow-v2-le:2.0.9-beta.2_2.0.9-beta.2
+    image: ghcr.io/mobiusflow/balena_rpi4_mobiusflow-v2-le:2.0.9-beta.3_2.0.9-beta.2
     privileged: true
     restart: always
     ports:
