@@ -38,7 +38,7 @@ services:
       io.resin.features.supervisor-api: "1"
 
   node-red:
-    image: mobiusflow/node-red-arm:1.0.0
+    image: mobiusflow/node-red:latest
     container_name: node-red
     privileged: false
     restart: always
@@ -50,7 +50,7 @@ services:
 
   toolbox:
     container_name: toolbox
-    image: mobiusflow/mobiusflow-toolbox-arm:1.0.2
+    image: mobiusflow/mobiusflow-toolbox:latest
     privileged: false
     restart: always
     ports:
