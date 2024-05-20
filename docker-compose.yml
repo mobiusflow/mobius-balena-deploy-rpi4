@@ -15,7 +15,7 @@ services:
       - node-red
 
   mobius:
-    image: ghcr.io/mobiusflow/balena_rpi4_mobiusflow-v2-le:2.3.2_2.3.1
+    image: ghcr.io/mobiusflow/balena_rpi4_mobiusflow-v2-le:2.3.1_2.3.1
     privileged: true
     restart: always
     ports:
@@ -38,7 +38,7 @@ services:
       io.resin.features.supervisor-api: "1"
 
   node-red:
-    image: mobiusflow/node-red:latest
+    image: ghcr.io/mobiusflow/node-red:latest
     container_name: node-red
     privileged: false
     restart: always
@@ -50,14 +50,14 @@ services:
 
   toolbox:
     container_name: toolbox
-    image: mobiusflow/mobiusflow-toolbox:latest
+    image: ghcr.io/mobiusflow/mobiusflow-toolbox:latest
     privileged: false
     restart: always
     ports:
       - 8080:8080
 
   manage:
-    image: ghcr.io/mobiusflow/balena_rpi4_manage-v2:2.3.2
+    image: ghcr.io/mobiusflow/balena_rpi4_manage-v2:2.3.3
     privileged: true
     network_mode: host
     restart: always
